@@ -361,58 +361,54 @@ window.addEventListener("DOMContentLoaded", () => {
     dotArr.push(dot);
   }
 
+  function updateSliderUI() {
+    slidesField.style.transform = `translateX(-${offset}px)`;
+
+    current.textContent = slides.length < 10 ? `0${slideIndex}` : slideIndex;
+
+    dotArr.forEach((dot) => (dot.style.opacity = ".5"));
+    if (dotArr[slideIndex - 1]) {
+      dotArr[slideIndex - 1].style.opacity = 1;
+    }
+  }
+
   function deleteNotDigits(str) {
     return +str.replace(/\D/g, '');
   }
 
   next.addEventListener("click", () => {
-    if (offset == deleteNotDigits(width) * (slides.length - 1))
-      offset = 0;
-    else offset += deleteNotDigits(width);
+    const widthNum = deleteNotDigits(width);
 
-    slidesField.style.transform = `translateX(-${offset}px)`;
+    if (offset == widthNum * (slides.length - 1)) offset = 0;
+    else offset += widthNum;
 
     if (slideIndex == slides.length) slideIndex = 1;
     else slideIndex++;
 
-    if (slides.length < 10) current.textContent = `0${slideIndex}`;
-    else current.textContent = slideIndex;
-
-    dotArr.forEach((dot) => (dot.style.opacity = ".5"));
-    dotArr[slideIndex - 1].style.opacity = 1;
+    updateSliderUI();
   });
 
   prev.addEventListener("click", () => {
-    if (offset === 0)
-      offset = deleteNotDigits(width) * (slides.length - 1);
-    else offset -= deleteNotDigits(width);
+    const widthNum = deleteNotDigits(width);
 
-    slidesField.style.transform = `translateX(-${offset}px)`;
+    if (offset === 0)
+      offset = widthNum * (slides.length - 1);
+    else offset -= widthNum;
 
     if (slideIndex == 1) slideIndex = slides.length;
     else slideIndex--;
 
-    if (slides.length < 10) current.textContent = `0${slideIndex}`;
-    else current.textContent = slideIndex;
-
-    dotArr.forEach((dot) => (dot.style.opacity = ".5"));
-    dotArr[slideIndex - 1].style.opacity = 1;
+    updateSliderUI();
   });
 
   dotArr.forEach((dot) => {
     dot.addEventListener("click", (e) => {
-      const slideTo = e.target.getAttribute("data-slide-to");
+      const slideTo = +e.target.getAttribute("data-slide-to");
 
       slideIndex = slideTo;
       offset = deleteNotDigits(width) * (slideTo - 1);
 
-      slidesField.style.transform = `translateX(-${offset}px)`;
-
-      if (slides.length < 10) current.textContent = `0${slideIndex}`;
-      else current.textContent = slideIndex;
-
-      dotArr.forEach((dot) => (dot.style.opacity = ".5"));
-      dotArr[slideIndex - 1].style.opacity = 1;
+      updateSliderUI();
     });
   });
 });
