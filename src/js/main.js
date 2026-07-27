@@ -362,9 +362,9 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   next.addEventListener("click", () => {
-    if (offset == +width.slice(0, width.length - 2) * (slides.length - 1))
+    if (offset == +width.replace(/\D/g, '') * (slides.length - 1))
       offset = 0;
-    else offset += +width.slice(0, width.length - 2);
+    else offset += +width.replace(/\D/g, "");
 
     slidesField.style.transform = `translateX(-${offset}px)`;
 
@@ -380,8 +380,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   prev.addEventListener("click", () => {
     if (offset === 0)
-      offset = +width.slice(0, width.length - 2) * (slides.length - 1);
-    else offset -= +width.slice(0, width.length - 2);
+      offset = +width.replace(/\D/g, "") * (slides.length - 1);
+    else offset -= +width.replace(/\D/g, "");
 
     slidesField.style.transform = `translateX(-${offset}px)`;
 
@@ -400,7 +400,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const slideTo = e.target.getAttribute("data-slide-to");
 
       slideIndex = slideTo;
-      offset = +width.slice(0, width.length - 2) * (slideTo - 1);
+      offset = +width.replace(/\D/g, "") * (slideTo - 1);
 
       slidesField.style.transform = `translateX(-${offset}px)`;
 
