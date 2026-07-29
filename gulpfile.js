@@ -48,6 +48,7 @@ gulp.task("build-js", () => {
                         debug: true,
                         corejs: 3,
                         useBuiltIns: "usage",
+                        modules: false,
                       },
                     ],
                   ],
@@ -86,7 +87,6 @@ gulp.task("watch", () => {
     notify: true,
   });
 
-  gulp.var_dump;
   gulp.watch("./src/index.html", gulp.parallel("copy-html"));
   gulp.watch("./src/**/*.php", gulp.parallel("copy-php"));
   gulp.watch("./src/icons/**/*.*", gulp.parallel("copy-assets"));
@@ -135,6 +135,7 @@ gulp.task("prod", () => {
                         debug: false,
                         corejs: 3,
                         useBuiltIns: "usage",
+                        modules: false, // <-- ВАЖЛИВО: аналогічно для prod
                       },
                     ],
                   ],
