@@ -50,6 +50,11 @@
       "name": "Назар",
       "phone": "0999200869",
       "id": "-h_GbdXQim0"
+    },
+    {
+      "name": "Назар",
+      "phone": "0999200869",
+      "id": "GTl4kurCMTY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
