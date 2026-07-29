@@ -45,10 +45,10 @@ gulp.task("build-js", () => {
                     [
                       "@babel/preset-env",
                       {
-                        debug: true,
+                        debug: false,
                         corejs: 3,
                         useBuiltIns: "usage",
-                        modules: false,
+                        modules: "commonjs",
                       },
                     ],
                   ],
