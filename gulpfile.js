@@ -135,7 +135,7 @@ gulp.task("prod", () => {
                         debug: false,
                         corejs: 3,
                         useBuiltIns: "usage",
-                        modules: false, // <-- ВАЖЛИВО: аналогічно для prod
+                        modules: false,
                       },
                     ],
                   ],
