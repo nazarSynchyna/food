@@ -2,6 +2,8 @@ const { default: axios } = require("axios");
 
 function cards() {
   // Класи для карточок
+  const menuUrl = "./db.json";
+
   class MenuCard {
     constructor(src, alt, title, descr, price, parentSelector, ...classes) {
       this.src = src;
@@ -42,8 +44,10 @@ function cards() {
     }
   }
 
-  axios.get("http://localhost:3000/menu").then((data) => {
-    data.data.forEach(({ img, altimg, title, descr, price }) => {
+  axios.get(menuUrl).then((data) => {
+    const menuItems = data.data.menu;
+
+    menuItems.forEach(({ img, altimg, title, descr, price }) => {
       new MenuCard(
         img,
         altimg,

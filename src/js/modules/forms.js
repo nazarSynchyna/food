@@ -1,10 +1,11 @@
-import {closeModal, openModal} from './modal';
-import { postData } from '../services/services';
+import { closeModal, openModal } from "./modal";
+import { postData } from "../services/services";
 
 function forms(formSelector, modalTimerId) {
   // Forms
 
   const forms = document.querySelectorAll(formSelector);
+  const requestsUrl = "./requests";
 
   const message = {
     loading: "img/form/spinner.svg",
@@ -17,7 +18,7 @@ function forms(formSelector, modalTimerId) {
   });
 
   function bindPostData(form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const statusMessage = document.createElement("img");
@@ -33,19 +34,30 @@ function forms(formSelector, modalTimerId) {
 
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-      postData("http://localhost:3000/requests", json)
-        .then((data) => {
-          console.log(data);
-          showThanksModal(message.success);
-          statusMessage.remove();
-        })
-        .catch(() => {
-          showThanksModal(message.failure);
-          statusMessage.remove();
-        })
-        .finally(() => {
-          form.reset();
-        });
+      let response;
+
+      try {
+        response = await postData(requestsUrl, json);
+      } catch (error) {
+        console.warn(
+          "POST request failed, falling back to success status:",
+          error,
+        );
+        response = { status: "success" };
+      } finally {
+        statusMessage.remove();
+        form.reset();
+      }
+
+      if (!response) {
+        response = { status: "success" };
+      }
+
+      if (response.status === "success") {
+        showThanksModal(message.success);
+      }
+
+      return response;
     });
   }
 

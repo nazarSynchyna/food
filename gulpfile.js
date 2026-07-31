@@ -22,6 +22,10 @@ gulp.task("copy-php", () => {
     .pipe(browsersync.stream());
 });
 
+gulp.task("copy-db", () => {
+  return gulp.src("./db.json").pipe(gulp.dest(dist)).pipe(browsersync.stream());
+});
+
 gulp.task("build-js", () => {
   return gulp
     .src("./src/js/main.js")
@@ -89,6 +93,7 @@ gulp.task("watch", () => {
 
   gulp.watch("./src/index.html", gulp.parallel("copy-html"));
   gulp.watch("./src/**/*.php", gulp.parallel("copy-php"));
+  gulp.watch("./db.json", gulp.parallel("copy-db"));
   gulp.watch("./src/icons/**/*.*", gulp.parallel("copy-assets"));
   gulp.watch("./src/img/**/*.*", gulp.parallel("copy-assets"));
   gulp.watch("./src/scss/**/*.scss", gulp.parallel("build-sass"));
@@ -100,6 +105,7 @@ gulp.task(
   gulp.parallel(
     "copy-html",
     "copy-php",
+    "copy-db",
     "copy-assets",
     "build-sass",
     "build-js",
@@ -109,6 +115,7 @@ gulp.task(
 gulp.task("prod", () => {
   gulp.src("./src/index.html").pipe(gulp.dest(dist));
   gulp.src("./src/**/*.php").pipe(gulp.dest(dist));
+  gulp.src("./db.json").pipe(gulp.dest(dist));
   gulp.src("./src/img/**/*.*").pipe(gulp.dest(dist + "/img"));
   gulp.src("./src/icons/**/*.*").pipe(gulp.dest(dist + "/icons"));
 
