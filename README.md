@@ -140,22 +140,6 @@ npm test       # Placeholder test script
 
 ---
 
-## Screenshots
-
-Add your UI screenshots here, for example:
-
-- Home page
-- Menu cards section
-- Calculator section
-- Modal window
-- Mobile responsive layout
-
-```md
-![Home](./src/img/screenshots/home.png)
-```
-
----
-
 ## Author
 
 **Nazar Synchyna**  
