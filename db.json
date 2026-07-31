@@ -34,27 +34,7 @@
     {
       "name": "Назар",
       "phone": "0999200869",
-      "id": "ev-HHrvc7Q8"
-    },
-    {
-      "name": "Назар",
-      "phone": "0999200869",
-      "id": "zhDJKHVMdOA"
-    },
-    {
-      "name": "Назар",
-      "phone": "0999200869",
-      "id": "ig1m6m6ac1M"
-    },
-    {
-      "name": "Назар",
-      "phone": "0999200869",
-      "id": "-h_GbdXQim0"
-    },
-    {
-      "name": "Назар",
-      "phone": "0999200869",
-      "id": "GTl4kurCMTY"
+      "id": "McUqdjCgD7c"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
