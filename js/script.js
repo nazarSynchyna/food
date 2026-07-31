@@ -3378,7 +3378,7 @@ const {
   default: axios
 } = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 function cards() {
-  // Класи для карточок
+  // Menu card classes
   const menuUrl = "./db.json";
   class MenuCard {
     constructor(src, alt, title, descr, price, parentSelector, ...classes) {
@@ -3409,8 +3409,8 @@ function cards() {
           <div class="menu__item-descr">${this.descr}</div>
           <div class="menu__item-divider"></div>
           <div class="menu__item-price">
-              <div class="menu__item-cost">Цена:</div>
-              <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+              <div class="menu__item-cost">Price:</div>
+              <div class="menu__item-total"><span>${this.price}</span> UAH/day</div>
           </div>
     `;
       this.parent.append(element);
@@ -3455,8 +3455,8 @@ function forms(formSelector, modalTimerId) {
   const requestsUrl = "./requests";
   const message = {
     loading: "img/form/spinner.svg",
-    success: "Дякую! Скоро ми з вами зв'яжемось",
-    failure: "Щось пішло не так..."
+    success: "Thank you! We will contact you soon.",
+    failure: "Something went wrong..."
   };
   forms.forEach(item => {
     bindPostData(item);
@@ -3477,7 +3477,7 @@ function forms(formSelector, modalTimerId) {
       try {
         response = await (0, _services.postData)(requestsUrl, json);
       } catch (error) {
-        console.warn("POST request failed, falling back to success status:", error);
+        console.warn("POST request failed, falling back to a success status:", error);
         response = {
           status: "success"
         };
