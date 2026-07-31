@@ -79,6 +79,15 @@ food/
 
 ---
 
+## Prerequisites
+
+- Node.js (recommended LTS, e.g. >= 18)
+- npm (or yarn)
+
+Note: The project uses modern build tools (Webpack, Babel, Gulp). Specifying the Node version in `package.json` helps reproduce the environment (see `engines` there).
+
+---
+
 ## Local Setup & Installation
 
 ### 1. Clone repository
@@ -108,12 +117,26 @@ This runs Gulp default tasks (`watch` + `build`) in development mode and outputs
 npx json-server db.json
 ```
 
+Note: The repository currently lists a beta version of `json-server` in devDependencies. If you encounter issues, update or install a stable `json-server` version globally or locally.
+
 ### 5. Open project
 
 Open/serve the compiled app from the `dist/` folder.
 
 > Note: BrowserSync is configured with a MAMP proxy (`http://localhost:8888/Food/dist/`) in `gulpfile.js`.  
 > If you do not use MAMP, adjust the proxy in BrowserSync config for your local environment.
+
+---
+
+## Build / Production
+
+To build production assets and optimize CSS/JS, run:
+
+```bash
+gulp prod
+```
+
+This writes optimized files to `dist/` (CSS minified, JS built for production).
 
 ---
 
@@ -127,6 +150,8 @@ npm run deploy
 
 This command publishes the `dist/` directory using `gh-pages`.
 
+Note: Ensure you have run a build (`gulp prod` or equivalent) before deploying so `dist/` contains the latest compiled assets.
+
 ---
 
 ## Scripts
@@ -134,8 +159,16 @@ This command publishes the `dist/` directory using `gh-pages`.
 ```bash
 npm start      # Run gulp default task (watch + build, development)
 npm run deploy # Deploy dist/ to GitHub Pages
-npm test       # Placeholder test script
+npm test       # Placeholder test script (no tests currently)
 ```
+
+---
+
+## Troubleshooting
+
+- If BrowserSync proxy is not applicable, update the `proxy` value in `gulpfile.js` or run without proxy.
+- If `npm start` fails due to Node version, install an LTS Node (>= 18) or use `nvm` to switch versions.
+- If json-server behavior differs, install a specific stable version: `npm i --save-dev json-server@0.17.0` (or similar).
 
 ---
 
