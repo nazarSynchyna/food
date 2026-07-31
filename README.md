@@ -1,6 +1,6 @@
 # Food Delivery & Healthy Nutrition
 
-A responsive web application for food delivery and healthy meal planning.  
+A web application for food delivery and healthy meal planning.  
 The project combines interactive UI components with dynamic content rendering and a user-friendly nutrition calculator.
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-f7df1e?logo=javascript&logoColor=000)](#tech-stack)
@@ -25,7 +25,6 @@ The project combines interactive UI components with dynamic content rendering an
 - Interactive modal windows (open/close, overlay click, ESC key, scroll trigger)
 - Countdown timer for promotional offers
 - Form submission flow with API integration capability (including Web3Forms-ready approach)
-- Fully responsive layout for desktop/tablet/mobile
 - Slider component for featured offers
 - Tab-based content switching
 
