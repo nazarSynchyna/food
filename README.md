@@ -24,7 +24,7 @@ The project combines interactive UI components with dynamic content rendering an
 - Calories / BJU (proteins, fats, carbs) calculator
 - Interactive modal windows (open/close, overlay click, ESC key, scroll trigger)
 - Countdown timer for promotional offers
-- Form submission flow with API integration capability (including Web3Forms-ready approach)
+- Form submission flow with API integration capability
 - Slider component for featured offers
 - Tab-based content switching
 
@@ -38,9 +38,9 @@ The project combines interactive UI components with dynamic content rendering an
 | Styling | CSS3, SCSS (Sass) |
 | Programming | JavaScript (ES6+) |
 | Data/HTTP | Axios, local `db.json` |
-| Build Tools | Gulp, Webpack, Babel, PostCSS, Autoprefixer |
+| Build Tools | Gulp, Webpack, Babel |
+| Production CSS pipeline (`gulp prod`) | PostCSS, Autoprefixer, CleanCSS |
 | Deployment | GitHub Pages (`gh-pages`) |
-| Forms/API | API-ready form logic (Web3Forms-compatible) |
 
 ---
 
@@ -100,7 +100,7 @@ npm install
 npm start
 ```
 
-This starts Gulp default tasks (`watch` + `build`) and outputs files to `dist/`.
+This runs Gulp default tasks (`watch` + `build`) in development mode and outputs files to `dist/`.
 
 ### 4. (Optional) Start local JSON server for API-like data
 
@@ -112,8 +112,8 @@ npx json-server db.json
 
 Open/serve the compiled app from the `dist/` folder.
 
-> Note: In this project, BrowserSync is configured with a MAMP proxy (`http://localhost:8888/Food/dist/`) in `gulpfile.js`.  
-> If you do not use MAMP, adjust the proxy or BrowserSync config to your local environment.
+> Note: BrowserSync is configured with a MAMP proxy (`http://localhost:8888/Food/dist/`) in `gulpfile.js`.  
+> If you do not use MAMP, adjust the proxy in BrowserSync config for your local environment.
 
 ---
 
@@ -132,7 +132,7 @@ This command publishes the `dist/` directory using `gh-pages`.
 ## Scripts
 
 ```bash
-npm start      # Run gulp (watch + build)
+npm start      # Run gulp default task (watch + build, development)
 npm run deploy # Deploy dist/ to GitHub Pages
 npm test       # Placeholder test script
 ```
