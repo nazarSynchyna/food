@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 
 function cards() {
-  // Класи для карточок
+  // Menu card classes
   const menuUrl = "./db.json";
 
   class MenuCard {
@@ -36,8 +36,8 @@ function cards() {
           <div class="menu__item-descr">${this.descr}</div>
           <div class="menu__item-divider"></div>
           <div class="menu__item-price">
-              <div class="menu__item-cost">Цена:</div>
-              <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+              <div class="menu__item-cost">Price:</div>
+              <div class="menu__item-total"><span>${this.price}</span> UAH/day</div>
           </div>
     `;
       this.parent.append(element);

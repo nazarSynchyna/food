@@ -9,8 +9,8 @@ function forms(formSelector, modalTimerId) {
 
   const message = {
     loading: "img/form/spinner.svg",
-    success: "Дякую! Скоро ми з вами зв'яжемось",
-    failure: "Щось пішло не так...",
+    success: "Thank you! We will contact you soon.",
+    failure: "Something went wrong...",
   };
 
   forms.forEach((item) => {
@@ -40,7 +40,7 @@ function forms(formSelector, modalTimerId) {
         response = await postData(requestsUrl, json);
       } catch (error) {
         console.warn(
-          "POST request failed, falling back to success status:",
+          "POST request failed, falling back to a success status:",
           error,
         );
         response = { status: "success" };
